@@ -149,6 +149,84 @@ line-height: 2;
 text-align: right;
 }
 
+/* HERO TERMINAL */
+.hero-terminal {
+position: absolute;
+right: 3rem;
+top: 50%;
+transform: translateY(-50%);
+width: 340px;
+border: 1px solid var(--glass-border);
+background: rgba(0,0,0,0.6);
+backdrop-filter: blur(8px);
+font-family: var(--font-mono);
+opacity: 0;
+animation: fadeup 1s ease forwards 1.2s;
+overflow: hidden;
+}
+.terminal-header {
+display: flex;
+align-items: center;
+gap: 6px;
+padding: 8px 12px;
+border-bottom: 1px solid var(--glass-border);
+background: rgba(255,255,255,0.02);
+}
+.terminal-dot {
+width: 8px; height: 8px;
+border-radius: 50%;
+background: var(--muted2);
+}
+.terminal-dot:first-child { background: rgba(255,88,88,0.5); }
+.terminal-dot:nth-child(2) { background: rgba(255,184,0,0.5); }
+.terminal-dot:nth-child(3) { background: rgba(0,255,136,0.4); }
+.terminal-title {
+font-size: 9px;
+color: var(--muted2);
+letter-spacing: 0.1em;
+margin-left: auto;
+}
+.terminal-body {
+padding: 12px;
+font-size: 10px;
+line-height: 1.8;
+color: var(--muted);
+letter-spacing: 0.03em;
+min-height: 180px;
+max-height: 220px;
+overflow: hidden;
+}
+.terminal-body .t-line {
+opacity: 0;
+animation: termLine 0.3s ease forwards;
+white-space: nowrap;
+overflow: hidden;
+}
+.t-prompt { color: var(--cyan); }
+.t-ok { color: rgba(0,255,136,0.7); }
+.t-warn { color: rgba(255,184,0,0.7); }
+.t-dim { color: var(--muted2); }
+.t-cursor {
+display: inline-block;
+width: 7px;
+height: 12px;
+background: var(--cyan);
+vertical-align: middle;
+animation: blink 1s step-end infinite;
+margin-left: 2px;
+}
+@keyframes termLine {
+to { opacity: 1; }
+}
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0; }
+}
+
+@media (max-width: 1100px) {
+.hero-terminal { display: none; }
+}
+
 .hero-vertical {
 position: absolute;
 left: 1.2rem;
@@ -983,6 +1061,17 @@ section { padding: 4rem 1.5rem; }
     2021 — 2025
 </div>
 
+<!-- HERO TERMINAL -->
+<div class="hero-terminal">
+    <div class="terminal-header">
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="terminal-title">manch@sys ~</span>
+    </div>
+    <div class="terminal-body" id="terminalBody"></div>
+</div>
+
 <div class="hero-eyebrow">// Operations Engineer &amp; AI/ML Engineer</div>
 
 <div class="hero-title">
@@ -1225,7 +1314,7 @@ section { padding: 4rem 1.5rem; }
     </div>
 
     <!-- B-DOC Hunter -->
-    <div class="project-card" style="grid-column: 1 / -1;">
+    <div class="project-card">
     <div class="project-number">05</div>
     <div class="project-status"><span class="status-built">DEPLOYED</span></div>
     <div class="project-title">B-DOC HUNTER</div>
@@ -1526,8 +1615,8 @@ section { padding: 4rem 1.5rem; }
     <a href="mailto:contact@mahatomanish.com" class="contact-val">contact@mahatomanish.com</a>
     </div>
     <div class="contact-cell">
-    <div class="contact-label">Phone</div>
-    <a href="tel:+918088544476" class="contact-val">+91 80885 44476</a>
+    <div class="contact-label">LinkedIn</div>
+    <a href="https://www.linkedin.com/in/manish-kumar-mahto-manchxz/" target="_blank" rel="noopener" class="contact-val">Manish Mahto</a>
     </div>
     <div class="contact-cell">
     <div class="contact-label">Website</div>
@@ -1663,6 +1752,48 @@ entries.forEach(entry => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('.metric-item').forEach(el => metricObserver.observe(el));
+
+// Hero terminal animation
+(function initTerminal() {
+const body = document.getElementById('terminalBody');
+if (!body) return;
+const lines = [
+    { text: '$ initializing manch_sys v2026...', cls: 't-prompt' },
+    { text: '[OK] core_modules loaded', cls: 't-ok' },
+    { text: '[OK] ai_engine: xgboost → m2cgen', cls: 't-ok' },
+    { text: '[OK] vision: opencv 4.9 ready', cls: 't-ok' },
+    { text: '[OK] serverless: vercel connected', cls: 't-ok' },
+    { text: '     deploy_size: 850MB → 50MB', cls: 't-dim' },
+    { text: '$ scanning factory floor...', cls: 't-prompt' },
+    { text: '[OK] bottleneck_detect: active', cls: 't-ok' },
+    { text: '[OK] production_monitor: online', cls: 't-ok' },
+    { text: '$ loading market_engine...', cls: 't-prompt' },
+    { text: '[OK] f&o_derivatives: tracking', cls: 't-ok' },
+    { text: '[~~] vix: 14.2 — low volatility', cls: 't-warn' },
+    { text: '$ all systems operational', cls: 't-prompt' },
+];
+
+let i = 0;
+function addLine() {
+    if (i >= lines.length) {
+    const cur = document.createElement('span');
+    cur.innerHTML = '<span class="t-prompt">>&nbsp;</span><span class="t-cursor"></span>';
+    cur.className = 't-line';
+    body.appendChild(cur);
+    return;
+    }
+    const el = document.createElement('div');
+    el.className = 't-line';
+    el.innerHTML = '<span class="' + lines[i].cls + '">' + lines[i].text + '</span>';
+    body.appendChild(el);
+    if (body.scrollHeight > body.clientHeight) {
+    body.scrollTop = body.scrollHeight;
+    }
+    i++;
+    setTimeout(addLine, 250 + Math.random() * 350);
+}
+setTimeout(addLine, 2000);
+})();
 </script>
 
 </body>
