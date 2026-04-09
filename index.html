@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MANISH MAHTO — Operations Manager & AI/ML Engineer</title>
+<title>MANISH MAHTO — Operations Engineer & AI/ML Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -33,16 +33,6 @@ background: var(--black);
 color: var(--white);
 font-family: var(--font-body);
 overflow-x: hidden;
-cursor: crosshair;
-}
-
-body::after {
-content: '';
-position: fixed;
-inset: 0;
-background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
-pointer-events: none;
-z-index: 9999;
 }
 
 .cursor {
@@ -140,14 +130,11 @@ overflow: hidden;
 position: absolute;
 inset: 0;
 background-image:
-    linear-gradient(rgba(0,238,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,238,255,0.04) 1px, transparent 1px);
-background-size: 60px 60px;
-animation: gridshift 20s linear infinite;
-}
-@keyframes gridshift {
-0% { transform: translateY(0); }
-100% { transform: translateY(60px); }
+    linear-gradient(rgba(0,238,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,238,255,0.025) 1px, transparent 1px);
+background-size: 72px 72px;
+mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+-webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
 }
 
 .hero-coords {
@@ -900,8 +887,8 @@ position: fixed;
 inset: 0;
 pointer-events: none;
 z-index: 9998;
-opacity: 0.025;
-background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+opacity: 0.018;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .corner-tl, .corner-br {
@@ -952,6 +939,10 @@ section { padding: 4rem 1.5rem; }
 .hero-coords { display: none; }
 .hobbies-grid .card-lg, .hobbies-grid .card-sm, .hobbies-grid .card-md,
 .hobbies-grid .card-xs, .hobbies-grid .card-8, .hobbies-grid .card-4 { grid-column: span 12; }
+.cursor, .cursor-ring { display: none !important; }
+}
+@media (pointer: coarse) {
+.cursor, .cursor-ring { display: none !important; }
 }
 </style>
 </head>
@@ -963,7 +954,7 @@ section { padding: 4rem 1.5rem; }
 
 <!-- NAV -->
 <nav>
-<a href="#" class="nav-logo">MM_SYS v2026</a>
+<a href="#" class="nav-logo">manch.v2026</a>
 <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#systems">Systems</a></li>
@@ -992,7 +983,7 @@ section { padding: 4rem 1.5rem; }
     2021 — 2025
 </div>
 
-<div class="hero-eyebrow">// Operations Manager &amp; AI/ML Engineer</div>
+<div class="hero-eyebrow">// Operations Engineer &amp; AI/ML Engineer</div>
 
 <div class="hero-title">
     MANISH<br>
@@ -1289,7 +1280,7 @@ section { padding: 4rem 1.5rem; }
 
     <div class="bento-card card-lg">
     <div class="card-tag">Systems Management</div>
-    <div class="card-heading">OPERATIONS<br>MANAGER</div>
+    <div class="card-heading">OPERATIONS<br>ENGINEER</div>
     <div class="card-body">
         Leading end-to-end digital transformation of a traditional textile manufacturing unit into a data-driven operation at Amithraj Apparels. Implementing production monitoring systems and operational data capture to identify bottlenecks and optimize resource allocation. Managing vendor relationships, production timelines, and cross-functional teams across factory floor operations.
     </div>
@@ -1392,25 +1383,13 @@ section { padding: 4rem 1.5rem; }
 
     <div class="timeline-item">
     <div class="timeline-date">Aug 2025 — Present</div>
-    <div class="timeline-role">OPERATIONS MANAGER</div>
+    <div class="timeline-role">OPERATIONS ENGINEER</div>
     <div class="timeline-company">Amithraj Apparels — Bangalore, India</div>
     <ul class="timeline-bullets">
         <li>Leading end-to-end digital transformation of a traditional textile manufacturing unit</li>
         <li>Implementing production monitoring systems and operational data capture</li>
         <li>Managing vendor relationships, production timelines, and cross-functional teams</li>
         <li>Phasing in high-efficiency technical upgrades without disrupting production</li>
-    </ul>
-    </div>
-
-    <div class="timeline-item">
-    <div class="timeline-date">May 2021 — March 2022</div>
-    <div class="timeline-role">FOUNDER &amp; TOURNAMENT DIRECTOR</div>
-    <div class="timeline-company">PerFormance Esports</div>
-    <ul class="timeline-bullets">
-        <li>0 → 1,000+ active participants within 60 days through targeted outreach</li>
-        <li>Designed and executed tournament operations including logistics and participant management</li>
-        <li>Managed end-to-end event delivery: venue coordination, vendor negotiations, timeline management</li>
-        <li>Automated onboarding systems and engagement loops</li>
     </ul>
     </div>
 
@@ -1422,6 +1401,18 @@ section { padding: 4rem 1.5rem; }
         <li>Executed SEO-driven campaigns and database management</li>
         <li>Designed ambassador programs and college outreach initiatives</li>
         <li>Optimized customer acquisition funnels and organic reach</li>
+    </ul>
+    </div>
+
+    <div class="timeline-item">
+    <div class="timeline-date">May 2021 — March 2022</div>
+    <div class="timeline-role">FOUNDER &amp; DIRECTOR</div>
+    <div class="timeline-company">PerFormance Esports</div>
+    <ul class="timeline-bullets">
+        <li>0 → 1,000+ active participants within 60 days through targeted outreach</li>
+        <li>Designed and executed tournament operations including logistics and participant management</li>
+        <li>Managed end-to-end event delivery: venue coordination, vendor negotiations, timeline management</li>
+        <li>Automated onboarding systems and engagement loops</li>
     </ul>
     </div>
 
@@ -1568,35 +1559,41 @@ section { padding: 4rem 1.5rem; }
 <script>
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
+const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+if (!isTouch) {
 let mx = 0, my = 0, rx = 0, ry = 0;
 
 document.addEventListener('mousemove', e => {
-mx = e.clientX; my = e.clientY;
-cursor.style.left = mx + 'px';
-cursor.style.top = my + 'px';
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
 });
 
-function animateRing() {
-rx += (mx - rx) * 0.12;
-ry += (my - ry) * 0.12;
-ring.style.left = rx + 'px';
-ring.style.top = ry + 'px';
-requestAnimationFrame(animateRing);
-}
-animateRing();
+(function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+})();
 
 document.querySelectorAll('a, button, .bento-card, .project-card, .hobby-card, .contact-cell').forEach(el => {
-el.addEventListener('mouseenter', () => {
+    el.addEventListener('mouseenter', () => {
     ring.style.width = '48px';
     ring.style.height = '48px';
     ring.style.borderColor = 'rgba(0,238,255,0.6)';
-});
-el.addEventListener('mouseleave', () => {
+    });
+    el.addEventListener('mouseleave', () => {
     ring.style.width = '32px';
     ring.style.height = '32px';
     ring.style.borderColor = 'rgba(0,238,255,0.3)';
+    });
 });
-});
+} else {
+cursor.remove();
+ring.remove();
+}
 
 function toggleSpecs(btn) {
 btn.classList.toggle('open');
