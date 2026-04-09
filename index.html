@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MANISH MAHTO — Operations Manager & AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+--black: #000000;
+--white: #FFFFFF;
+--cyan: #00EEFF;
+--cyan-dim: rgba(0,238,255,0.12);
+--cyan-border: rgba(0,238,255,0.3);
+--glass: rgba(255,255,255,0.04);
+--glass-border: rgba(255,255,255,0.08);
+--muted: rgba(255,255,255,0.4);
+--muted2: rgba(255,255,255,0.15);
+--green: #00FF88;
+--amber: #FFB800;
+--font-display: 'Bebas Neue', sans-serif;
+--font-body: 'Space Grotesk', sans-serif;
+--font-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(--black);
+color: var(--white);
+font-family: var(--font-body);
+overflow-x: hidden;
+cursor: crosshair;
+}
+
+body::after {
+content: '';
+position: fixed;
+inset: 0;
+background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+pointer-events: none;
+z-index: 9999;
+}
+
+.cursor {
+position: fixed;
+width: 8px; height: 8px;
+background: var(--cyan);
+border-radius: 0;
+pointer-events: none;
+z-index: 10000;
+transform: translate(-50%,-50%);
+transition: transform 0.1s;
+mix-blend-mode: screen;
+}
+.cursor-ring {
+position: fixed;
+width: 32px; height: 32px;
+border: 1px solid var(--cyan-border);
+border-radius: 0;
+pointer-events: none;
+z-index: 9999;
+transform: translate(-50%,-50%);
+transition: all 0.15s ease;
+mix-blend-mode: screen;
+}
+
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 1000;
+padding: 1.5rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+background: rgba(0,0,0,0.8);
+backdrop-filter: blur(20px);
+}
+
+.nav-logo {
+font-family: var(--font-mono);
+font-size: 11px;
+letter-spacing: 0.2em;
+color: var(--cyan);
+text-decoration: none;
+}
+
+.nav-links {
+display: flex;
+gap: 3rem;
+list-style: none;
+}
+
+.nav-links a {
+font-family: var(--font-mono);
+font-size: 10px;
+letter-spacing: 0.25em;
+text-decoration: none;
+color: var(--muted);
+transition: color 0.2s;
+text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-status {
+font-family: var(--font-mono);
+font-size: 10px;
+color: var(--muted);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.status-dot {
+width: 6px; height: 6px;
+background: #00FF88;
+border-radius: 50%;
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.3; }
+}
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 0 3rem 4rem;
+position: relative;
+overflow: hidden;
+}
+
+.hero-grid {
+position: absolute;
+inset: 0;
+background-image:
+    linear-gradient(rgba(0,238,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,238,255,0.04) 1px, transparent 1px);
+background-size: 60px 60px;
+animation: gridshift 20s linear infinite;
+}
+@keyframes gridshift {
+0% { transform: translateY(0); }
+100% { transform: translateY(60px); }
+}
+
+.hero-coords {
+position: absolute;
+top: 8rem;
+right: 3rem;
+font-family: var(--font-mono);
+font-size: 10px;
+color: var(--muted2);
+letter-spacing: 0.1em;
+line-height: 2;
+text-align: right;
+}
+
+.hero-vertical {
+position: absolute;
+left: 1.2rem;
+top: 50%;
+transform: translateY(-50%) rotate(-90deg);
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.3em;
+color: var(--muted2);
+white-space: nowrap;
+text-transform: uppercase;
+}
+
+.hero-eyebrow {
+font-family: var(--font-mono);
+font-size: 11px;
+letter-spacing: 0.3em;
+color: var(--cyan);
+text-transform: uppercase;
+margin-bottom: 1.5rem;
+opacity: 0;
+transform: translateY(20px);
+animation: fadeup 0.8s ease forwards 0.3s;
+}
+
+.hero-title {
+font-family: var(--font-display);
+font-size: clamp(72px, 12vw, 160px);
+line-height: 0.92;
+letter-spacing: 0.02em;
+opacity: 0;
+transform: translateY(40px);
+animation: fadeup 1s ease forwards 0.5s;
+}
+
+.hero-title .accent {
+color: var(--cyan);
+}
+
+.hero-subtitle {
+font-family: var(--font-display);
+font-size: clamp(36px, 5vw, 72px);
+line-height: 1;
+color: var(--muted);
+letter-spacing: 0.03em;
+margin-top: 0.5rem;
+opacity: 0;
+transform: translateY(30px);
+animation: fadeup 1s ease forwards 0.7s;
+}
+
+.hero-bottom {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-top: 3rem;
+opacity: 0;
+animation: fadeup 0.8s ease forwards 1s;
+}
+
+.hero-bio {
+max-width: 520px;
+font-size: 13px;
+line-height: 1.8;
+color: var(--muted);
+font-weight: 300;
+border-left: 1px solid var(--cyan-border);
+padding-left: 1.5rem;
+}
+
+.hero-metrics {
+display: flex;
+gap: 3rem;
+text-align: right;
+}
+
+.metric-item .val {
+font-family: var(--font-display);
+font-size: 42px;
+color: var(--white);
+line-height: 1;
+}
+.metric-item .val span { color: var(--cyan); }
+.metric-item .lbl {
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.2em;
+color: var(--muted);
+text-transform: uppercase;
+margin-top: 4px;
+}
+
+@keyframes fadeup {
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTION WRAPPER */
+section {
+padding: 6rem 3rem;
+position: relative;
+}
+
+.section-label {
+font-family: var(--font-mono);
+font-size: 10px;
+letter-spacing: 0.3em;
+color: var(--cyan);
+text-transform: uppercase;
+margin-bottom: 3rem;
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+.section-label::after {
+content: '';
+flex: 1;
+height: 1px;
+background: var(--glass-border);
+}
+
+.section-title {
+font-family: var(--font-display);
+font-size: clamp(48px, 6vw, 96px);
+line-height: 0.95;
+letter-spacing: 0.02em;
+margin-bottom: 4rem;
+}
+
+/* BENTO GRID */
+.bento {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: auto;
+gap: 1px;
+background: var(--glass-border);
+border: 1px solid var(--glass-border);
+}
+
+.bento-card {
+background: var(--black);
+padding: 2.5rem;
+position: relative;
+overflow: hidden;
+transition: background 0.3s;
+}
+.bento-card::before {
+content: '';
+position: absolute;
+inset: 0;
+background: var(--glass);
+opacity: 0;
+transition: opacity 0.3s;
+}
+.bento-card:hover::before { opacity: 1; }
+.bento-card:hover { background: rgba(0,238,255,0.02); }
+
+.card-lg { grid-column: span 7; }
+.card-sm { grid-column: span 5; }
+.card-md { grid-column: span 6; }
+.card-xs { grid-column: span 4; }
+.card-full { grid-column: span 12; }
+.card-8 { grid-column: span 8; }
+.card-4 { grid-column: span 4; }
+
+.card-tag {
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.2em;
+color: var(--cyan);
+text-transform: uppercase;
+margin-bottom: 1.5rem;
+padding: 4px 8px;
+border: 1px solid var(--cyan-border);
+display: inline-block;
+}
+
+.card-heading {
+font-family: var(--font-display);
+font-size: clamp(32px, 3vw, 52px);
+line-height: 1;
+letter-spacing: 0.02em;
+margin-bottom: 1rem;
+}
+
+.card-body {
+font-size: 13px;
+line-height: 1.8;
+color: var(--muted);
+font-weight: 300;
+}
+
+.big-number {
+font-family: var(--font-display);
+font-size: clamp(80px, 8vw, 120px);
+line-height: 1;
+color: var(--white);
+}
+.big-number span { color: var(--cyan); }
+
+.skill-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-top: 1.5rem;
+}
+.skill-tag {
+font-family: var(--font-mono);
+font-size: 10px;
+letter-spacing: 0.1em;
+color: var(--muted);
+border: 1px solid var(--glass-border);
+padding: 4px 10px;
+text-transform: uppercase;
+transition: all 0.2s;
+}
+.skill-tag:hover {
+color: var(--cyan);
+border-color: var(--cyan-border);
+}
+
+/* TICKER */
+.ticker-wrap {
+overflow: hidden;
+border-top: 1px solid var(--glass-border);
+border-bottom: 1px solid var(--glass-border);
+padding: 1rem 0;
+background: var(--glass);
+}
+.ticker {
+display: flex;
+gap: 4rem;
+animation: ticker 20s linear infinite;
+white-space: nowrap;
+}
+.ticker-item {
+font-family: var(--font-mono);
+font-size: 11px;
+letter-spacing: 0.15em;
+color: var(--muted2);
+text-transform: uppercase;
+flex-shrink: 0;
+}
+.ticker-item span { color: var(--cyan); margin-right: 0.5rem; }
+@keyframes ticker {
+0% { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+
+/* PROJECTS */
+.projects-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1px;
+background: var(--glass-border);
+border: 1px solid var(--glass-border);
+}
+
+.project-card {
+background: var(--black);
+padding: 3rem;
+position: relative;
+overflow: hidden;
+transition: background 0.3s;
+}
+.project-card:hover { background: rgba(0,238,255,0.03); }
+
+.project-featured {
+grid-column: 1 / -1;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+align-items: start;
+}
+
+.project-number {
+font-family: var(--font-display);
+font-size: 100px;
+line-height: 1;
+color: var(--muted2);
+letter-spacing: -0.02em;
+position: absolute;
+top: 1.5rem;
+right: 2rem;
+transition: color 0.3s;
+}
+.project-card:hover .project-number { color: rgba(0,238,255,0.15); }
+
+.project-status {
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.2em;
+margin-bottom: 1.5rem;
+display: inline-flex;
+align-items: center;
+gap: 8px;
+text-transform: uppercase;
+}
+.status-pending {
+color: #FFB800;
+border: 1px solid rgba(255,184,0,0.3);
+padding: 3px 8px;
+}
+.status-ranked {
+color: var(--cyan);
+border: 1px solid var(--cyan-border);
+padding: 3px 8px;
+}
+.status-built {
+color: #00FF88;
+border: 1px solid rgba(0,255,136,0.3);
+padding: 3px 8px;
+}
+.status-live {
+color: #00FF88;
+border: 1px solid rgba(0,255,136,0.3);
+padding: 3px 8px;
+position: relative;
+}
+.status-live::before {
+content: '';
+width: 5px; height: 5px;
+background: #00FF88;
+border-radius: 50%;
+display: inline-block;
+margin-right: 4px;
+animation: pulse 1.5s infinite;
+}
+.status-dev {
+color: var(--amber);
+border: 1px solid rgba(255,184,0,0.3);
+padding: 3px 8px;
+}
+
+.project-title {
+font-family: var(--font-display);
+font-size: clamp(28px, 3vw, 44px);
+line-height: 1;
+letter-spacing: 0.02em;
+margin-bottom: 1rem;
+}
+
+.project-title a {
+color: var(--white);
+text-decoration: none;
+transition: color 0.2s;
+}
+.project-title a:hover {
+color: var(--cyan);
+}
+
+.project-desc {
+font-size: 13px;
+line-height: 1.8;
+color: var(--muted);
+font-weight: 300;
+margin-bottom: 1.5rem;
+}
+
+.project-links {
+display: flex;
+gap: 1rem;
+margin-bottom: 1.5rem;
+flex-wrap: wrap;
+}
+
+.project-link {
+font-family: var(--font-mono);
+font-size: 10px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 6px 14px;
+border: 1px solid var(--cyan-border);
+color: var(--cyan);
+transition: all 0.2s;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+}
+.project-link:hover {
+background: var(--cyan);
+color: var(--black);
+border-color: var(--cyan);
+}
+.project-link.secondary {
+border-color: var(--glass-border);
+color: var(--muted);
+}
+.project-link.secondary:hover {
+border-color: var(--white);
+color: var(--white);
+background: transparent;
+}
+
+/* EXPANDABLE PROJECT DETAILS */
+.project-expand-toggle {
+font-family: var(--font-mono);
+font-size: 10px;
+letter-spacing: 0.15em;
+color: var(--muted);
+text-transform: uppercase;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 8px;
+background: none;
+border: none;
+padding: 0;
+transition: color 0.2s;
+margin-bottom: 0.5rem;
+}
+.project-expand-toggle:hover { color: var(--cyan); }
+.project-expand-toggle .arrow {
+transition: transform 0.3s;
+display: inline-block;
+}
+.project-expand-toggle.open .arrow { transform: rotate(90deg); }
+
+.project-expand {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s ease;
+}
+.project-expand.open { max-height: 800px; }
+
+.expand-content {
+border-top: 1px solid var(--glass-border);
+margin-top: 1rem;
+padding-top: 1.5rem;
+}
+
+.expand-section {
+margin-bottom: 1.5rem;
+}
+
+.expand-label {
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.2em;
+color: var(--cyan);
+text-transform: uppercase;
+margin-bottom: 0.75rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.expand-label::after {
+content: '';
+flex: 1;
+height: 1px;
+background: var(--glass-border);
+}
+
+.expand-text {
+font-size: 13px;
+line-height: 1.8;
+color: var(--muted);
+font-weight: 300;
+}
+
+.expand-text strong {
+color: var(--white);
+font-weight: 500;
+}
+
+/* SPECS DRAWER */
+.specs-toggle {
+font-family: var(--font-mono);
+font-size: 10px;
+letter-spacing: 0.15em;
+color: var(--muted);
+text-transform: uppercase;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 8px;
+background: none;
+border: none;
+padding: 0;
+transition: color 0.2s;
+}
+.specs-toggle:hover { color: var(--cyan); }
+.specs-toggle .arrow {
+transition: transform 0.3s;
+display: inline-block;
+}
+.specs-toggle.open .arrow { transform: rotate(90deg); }
+
+.specs-drawer {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease;
+}
+.specs-drawer.open { max-height: 300px; }
+
+.specs-list {
+border-top: 1px solid var(--glass-border);
+margin-top: 1rem;
+padding-top: 1rem;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.75rem;
+}
+.spec-item .spec-key {
+font-family: var(--font-mono);
+font-size: 9px;
+color: var(--muted2);
+letter-spacing: 0.15em;
+text-transform: uppercase;
+margin-bottom: 2px;
+}
+.spec-item .spec-val {
+font-size: 12px;
+color: var(--white);
+}
+
+/* HARDWARE CARD */
+.hw-bar {
+height: 2px;
+background: var(--glass-border);
+margin: 8px 0;
+position: relative;
+overflow: hidden;
+}
+.hw-bar-fill {
+height: 100%;
+background: var(--cyan);
+animation: barfill 2s ease forwards;
+}
+@keyframes barfill {
+from { width: 0; }
+}
+
+/* HOBBIES */
+.hobbies-grid {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+gap: 1px;
+background: var(--glass-border);
+border: 1px solid var(--glass-border);
+}
+
+.hobby-card {
+background: var(--black);
+padding: 2rem;
+position: relative;
+overflow: hidden;
+transition: background 0.3s;
+}
+.hobby-card:hover { background: rgba(0,238,255,0.02); }
+
+.hobby-card .card-tag {
+margin-bottom: 1rem;
+}
+
+.hobby-icon {
+font-size: 24px;
+margin-bottom: 1rem;
+filter: grayscale(0.3);
+}
+
+.hobby-title {
+font-family: var(--font-display);
+font-size: clamp(24px, 2.5vw, 36px);
+line-height: 1;
+letter-spacing: 0.02em;
+margin-bottom: 0.75rem;
+}
+
+.hobby-desc {
+font-size: 12px;
+line-height: 1.7;
+color: var(--muted);
+font-weight: 300;
+}
+
+.hobby-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-top: 1rem;
+}
+
+.hobby-tag {
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.1em;
+color: var(--muted);
+border: 1px solid var(--glass-border);
+padding: 3px 8px;
+text-transform: uppercase;
+transition: all 0.2s;
+}
+.hobby-tag:hover {
+color: var(--cyan);
+border-color: var(--cyan-border);
+}
+
+/* EXPERIENCE TIMELINE */
+.timeline {
+position: relative;
+padding-left: 2rem;
+border-left: 1px solid var(--glass-border);
+}
+.timeline-item {
+margin-bottom: 3rem;
+position: relative;
+}
+.timeline-item::before {
+content: '';
+position: absolute;
+left: -2.5rem;
+top: 6px;
+width: 8px; height: 8px;
+background: var(--cyan);
+border-radius: 0;
+}
+.timeline-date {
+font-family: var(--font-mono);
+font-size: 10px;
+color: var(--cyan);
+letter-spacing: 0.1em;
+margin-bottom: 0.5rem;
+text-transform: uppercase;
+}
+.timeline-role {
+font-family: var(--font-display);
+font-size: 28px;
+line-height: 1;
+letter-spacing: 0.02em;
+margin-bottom: 0.25rem;
+}
+.timeline-company {
+font-size: 13px;
+color: var(--muted);
+margin-bottom: 1rem;
+}
+.timeline-bullets {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+.timeline-bullets li {
+font-size: 12px;
+color: var(--muted);
+line-height: 1.6;
+padding-left: 1rem;
+position: relative;
+}
+.timeline-bullets li::before {
+content: '→';
+position: absolute;
+left: 0;
+color: var(--cyan);
+font-size: 10px;
+}
+
+/* CONTACT */
+.contact-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1px;
+background: var(--glass-border);
+border: 1px solid var(--glass-border);
+}
+.contact-cell {
+background: var(--black);
+padding: 2.5rem;
+transition: background 0.3s;
+}
+.contact-cell:hover {
+background: rgba(0,238,255,0.02);
+}
+.contact-label {
+font-family: var(--font-mono);
+font-size: 9px;
+letter-spacing: 0.2em;
+color: var(--muted2);
+text-transform: uppercase;
+margin-bottom: 0.5rem;
+}
+.contact-val {
+font-family: var(--font-display);
+font-size: 28px;
+letter-spacing: 0.03em;
+color: var(--white);
+text-decoration: none;
+transition: color 0.2s;
+display: block;
+}
+.contact-val:hover { color: var(--cyan); }
+
+.contact-resume {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+}
+.contact-resume::after {
+content: '↗';
+font-size: 16px;
+transition: transform 0.2s;
+}
+.contact-resume:hover::after {
+transform: translate(2px, -2px);
+}
+
+/* FOOTER */
+footer {
+border-top: 1px solid var(--glass-border);
+padding: 2rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+footer .foot-left {
+font-family: var(--font-mono);
+font-size: 10px;
+color: var(--muted2);
+letter-spacing: 0.15em;
+}
+footer .foot-right {
+font-family: var(--font-mono);
+font-size: 10px;
+color: var(--muted2);
+letter-spacing: 0.1em;
+}
+
+.sep {
+height: 1px;
+background: var(--glass-border);
+}
+
+.noise {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 9998;
+opacity: 0.025;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.corner-tl, .corner-br {
+position: absolute;
+width: 20px; height: 20px;
+pointer-events: none;
+}
+.corner-tl {
+top: 0; left: 0;
+border-top: 1px solid var(--cyan-border);
+border-left: 1px solid var(--cyan-border);
+}
+.corner-br {
+bottom: 0; right: 0;
+border-bottom: 1px solid var(--cyan-border);
+border-right: 1px solid var(--cyan-border);
+}
+
+/* GLOW EFFECT ON FEATURED PROJECT */
+.project-card.featured-card {
+position: relative;
+}
+.project-card.featured-card::after {
+content: '';
+position: absolute;
+top: 0; left: 0;
+width: 100%;
+height: 2px;
+background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+opacity: 0;
+transition: opacity 0.3s;
+}
+.project-card.featured-card:hover::after {
+opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+nav { padding: 1.2rem 1.5rem; }
+.nav-status { display: none; }
+section { padding: 4rem 1.5rem; }
+.hero { padding: 0 1.5rem 3rem; }
+.card-lg, .card-sm, .card-md, .card-xs, .card-8, .card-4 { grid-column: span 12; }
+.projects-grid { grid-template-columns: 1fr; }
+.project-featured { grid-template-columns: 1fr; }
+.contact-grid { grid-template-columns: 1fr; }
+.hero-metrics { display: none; }
+.hero-coords { display: none; }
+.hobbies-grid .card-lg, .hobbies-grid .card-sm, .hobbies-grid .card-md,
+.hobbies-grid .card-xs, .hobbies-grid .card-8, .hobbies-grid .card-4 { grid-column: span 12; }
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+<a href="#" class="nav-logo">MM_SYS v2026</a>
+<ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#systems">Systems</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
+<div class="nav-status">
+    <div class="status-dot"></div>
+    Available for opportunities
+</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+<div class="hero-grid"></div>
+
+<div class="hero-vertical">BANGALORE, INDIA // 12.9716° N, 77.5946° E</div>
+
+<div class="hero-coords">
+    LAT: 12.9716°<br>
+    LNG: 77.5946°<br>
+    ALT: 920M<br><br>
+    B.TECH AI/ML<br>
+    JAIN UNIVERSITY<br>
+    2021 — 2025
+</div>
+
+<div class="hero-eyebrow">// Operations Manager &amp; AI/ML Engineer</div>
+
+<div class="hero-title">
+    MANISH<br>
+    MAH<span class="accent">T</span>O
+</div>
+<div class="hero-subtitle">BUILDING SYSTEMS THAT SCALE</div>
+
+<div class="hero-bottom">
+    <div class="hero-bio">
+    Technical strategist operating at the intersection of AI engineering and traditional industry. From transpiling ML models into pure Python to bypass cloud constraints, to digitizing legacy manufacturing on the factory floor — building systems that operate at their absolute core. An operator who refuses to be boxed into a single discipline.
+    </div>
+    <div class="hero-metrics">
+    <div class="metric-item">
+        <div class="val">4<span>+</span></div>
+        <div class="lbl">Years in Markets</div>
+    </div>
+    <div class="metric-item">
+        <div class="val">1K<span>+</span></div>
+        <div class="lbl">Community Members</div>
+    </div>
+    <div class="metric-item">
+        <div class="val">60<span>D</span></div>
+        <div class="lbl">Days to Scale</div>
+    </div>
+    </div>
+</div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+<div class="ticker">
+    <div class="ticker-item"><span>→</span> Operations Management</div>
+    <div class="ticker-item"><span>→</span> AI/ML Engineering</div>
+    <div class="ticker-item"><span>→</span> Industrial Strategy</div>
+    <div class="ticker-item"><span>→</span> NLP Engineering</div>
+    <div class="ticker-item"><span>→</span> Computer Vision</div>
+    <div class="ticker-item"><span>→</span> Serverless Architecture</div>
+    <div class="ticker-item"><span>→</span> Product Growth</div>
+    <div class="ticker-item"><span>→</span> Community Building</div>
+    <div class="ticker-item"><span>→</span> Operations Management</div>
+    <div class="ticker-item"><span>→</span> AI/ML Engineering</div>
+    <div class="ticker-item"><span>→</span> Industrial Strategy</div>
+    <div class="ticker-item"><span>→</span> NLP Engineering</div>
+    <div class="ticker-item"><span>→</span> Computer Vision</div>
+    <div class="ticker-item"><span>→</span> Serverless Architecture</div>
+    <div class="ticker-item"><span>→</span> Product Growth</div>
+    <div class="ticker-item"><span>→</span> Community Building</div>
+</div>
+</div>
+
+<!-- SECTION 01: PROJECTS -->
+<section id="projects">
+<div class="section-label">01 // Technical Projects</div>
+<div class="section-title">ENGINEERED<br>FROM SCRATCH</div>
+
+<div class="projects-grid">
+
+    <!-- FEATURED: CreditNeverBefore -->
+    <div class="project-card featured-card" style="grid-column: 1 / -1;">
+    <div class="project-number">01</div>
+    <div class="project-status"><span class="status-live">DEPLOYED // LIVE</span></div>
+    <div class="project-title"><a href="https://credit-never-before.vercel.app/" target="_blank" rel="noopener">CREDITNEVERBEFORE</a></div>
+    <div class="project-desc">
+        Full-stack behavioral credit scoring engine. Engineered a behavioral credit risk model using alternative data to provide scoring for "thin-file" users — bypassed Vercel's 500MB serverless limit by transpiling an XGBoost model into pure Python via m2cgen, achieving a 94% reduction in deployment size.
+    </div>
+    <div class="project-links">
+        <a href="https://credit-never-before.vercel.app/" target="_blank" rel="noopener" class="project-link">View Live →</a>
+        <a href="https://github.com/manchxz/CreditNeverBefore" target="_blank" rel="noopener" class="project-link secondary">GitHub →</a>
+    </div>
+
+    <button class="project-expand-toggle" onclick="toggleExpand(this)">
+        <span class="arrow">▶</span> Project Deep Dive
+    </button>
+    <div class="project-expand">
+        <div class="expand-content">
+        <div class="expand-section">
+            <div class="expand-label">Description</div>
+            <div class="expand-text">
+            CreditNeverBefore is a behavioral AI scoring engine designed to solve the <strong>"Thin-File" problem</strong> in the credit industry. Most traditional banks reject young users or small-scale entrepreneurs because they lack a formal credit history (CIBIL score). This project uses <strong>alternative data</strong> to prove creditworthiness through behavior rather than just debt history. The frontend (Next.js 14, React 18, TypeScript, Tailwind CSS) collects user-friendly inputs and calls a Python (Flask) backend that scores features and returns a 300–850-style score plus decision hints.
+            </div>
+        </div>
+        <div class="expand-section">
+            <div class="expand-label">Use Case</div>
+            <div class="expand-text">
+            The primary use case is <strong>Micro-Lending for the Unbanked</strong>. Target: A college student or a first-time freelancer who needs a small loan for equipment (like a camera or laptop) but has no credit card history.<br><br>
+            <strong>The Process:</strong> Instead of checking a credit bureau, the engine analyzes alternative data points — such as UPI transaction velocity, utility bill consistency, and digital footprint — to generate a "Behavioral Trust Score."<br><br>
+            <strong>The Outcome:</strong> It allows Fintech startups to approve low-risk, high-potential users who are currently ignored by the traditional banking system.
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <button class="specs-toggle" onclick="toggleSpecs(this)">
+        <span class="arrow">▶</span> Technical Specs
+    </button>
+    <div class="specs-drawer">
+        <div class="specs-list">
+        <div class="spec-item"><div class="spec-key">Frontend</div><div class="spec-val">Next.js 14 / React 18 / TypeScript</div></div>
+        <div class="spec-item"><div class="spec-key">Backend</div><div class="spec-val">Flask / Python</div></div>
+        <div class="spec-item"><div class="spec-key">Model</div><div class="spec-val">XGBoost → m2cgen (Pure Python)</div></div>
+        <div class="spec-item"><div class="spec-key">Deploy</div><div class="spec-val">Vercel Serverless</div></div>
+        <div class="spec-item"><div class="spec-key">Optimization</div><div class="spec-val">850MB → ~50MB (94% reduction)</div></div>
+        <div class="spec-item"><div class="spec-key">Styling</div><div class="spec-val">Tailwind CSS</div></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- TraceVision -->
+    <div class="project-card">
+    <div class="project-number">02</div>
+    <div class="project-status"><span class="status-dev">IN DEVELOPMENT</span></div>
+    <div class="project-title"><a href="https://github.com/manchxz/TraceVision" target="_blank" rel="noopener">TRACEVISION</a></div>
+    <div class="project-desc">
+        Industrial-grade vision-language model for trajectory-aware spatial understanding. Bridging the gap between global image context and fine-grained human attention patterns for real-time operational monitoring and bottleneck identification in manufacturing.
+    </div>
+    <div class="project-links">
+        <a href="https://github.com/manchxz/TraceVision" target="_blank" rel="noopener" class="project-link secondary">GitHub →</a>
+    </div>
+
+    <button class="project-expand-toggle" onclick="toggleExpand(this)">
+        <span class="arrow">▶</span> Project Details
+    </button>
+    <div class="project-expand">
+        <div class="expand-content">
+        <div class="expand-section">
+            <div class="expand-label">Description</div>
+            <div class="expand-text">
+            Engineered to bridge the gap between global image context and fine-grained human attention patterns. Focused on <strong>real-time operational monitoring</strong> and bottleneck identification in manufacturing environments — applying computer vision directly to the industrial domain.
+            </div>
+        </div>
+        <div class="expand-section">
+            <div class="expand-label">Use Case</div>
+            <div class="expand-text">
+            <strong>Industrial Quality Control & Workflow Optimization.</strong> Deployed in manufacturing settings to track worker movement trajectories, identify production bottlenecks, and provide spatial intelligence that traditional monitoring systems miss.
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <button class="specs-toggle" onclick="toggleSpecs(this)">
+        <span class="arrow">▶</span> Technical Specs
+    </button>
+    <div class="specs-drawer">
+        <div class="specs-list">
+        <div class="spec-item"><div class="spec-key">Core</div><div class="spec-val">Vision-Language Model</div></div>
+        <div class="spec-item"><div class="spec-key">Focus</div><div class="spec-val">Trajectory Analysis</div></div>
+        <div class="spec-item"><div class="spec-key">Domain</div><div class="spec-val">Industrial Manufacturing</div></div>
+        <div class="spec-item"><div class="spec-key">Type</div><div class="spec-val">Spatial Intelligence</div></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Smart Mirror AI -->
+    <div class="project-card">
+    <div class="project-number">03</div>
+    <div class="project-status"><span class="status-pending">PATENT PENDING</span></div>
+    <div class="project-title">SMART MIRROR AI</div>
+    <div class="project-desc">
+        AI-integrated mirror built with Python and OpenCV. Real-time APIs for weather and news. Facial recognition system enabling personalized user profiles — ambient, adaptive, intelligent.
+    </div>
+
+    <button class="project-expand-toggle" onclick="toggleExpand(this)">
+        <span class="arrow">▶</span> Project Details
+    </button>
+    <div class="project-expand">
+        <div class="expand-content">
+        <div class="expand-section">
+            <div class="expand-label">Description</div>
+            <div class="expand-text">
+            A hardware-software fusion project — an <strong>AI-powered smart mirror</strong> that recognizes faces and adapts its display to individual user profiles. Integrates real-time weather, news, and calendar APIs into an ambient, always-on interface.
+            </div>
+        </div>
+        <div class="expand-section">
+            <div class="expand-label">Use Case</div>
+            <div class="expand-text">
+            <strong>Personalized Ambient Computing.</strong> Each household member gets a tailored dashboard upon facial recognition — weather preferences, news categories, calendar events, and virtual fashion trial, all displayed on a reflective surface.
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <button class="specs-toggle" onclick="toggleSpecs(this)">
+        <span class="arrow">▶</span> Technical Specs
+    </button>
+    <div class="specs-drawer">
+        <div class="specs-list">
+        <div class="spec-item"><div class="spec-key">Language</div><div class="spec-val">Python</div></div>
+        <div class="spec-item"><div class="spec-key">Vision</div><div class="spec-val">OpenCV</div></div>
+        <div class="spec-item"><div class="spec-key">Feature</div><div class="spec-val">Facial Recognition</div></div>
+        <div class="spec-item"><div class="spec-key">APIs</div><div class="spec-val">Weather / News</div></div>
+        <div class="spec-item"><div class="spec-key">Status</div><div class="spec-val">Patent Pending</div></div>
+        <div class="spec-item"><div class="spec-key">Type</div><div class="spec-val">AI/ML Hardware</div></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Fire Evacuation AI -->
+    <div class="project-card">
+    <div class="project-number">04</div>
+    <div class="project-status"><span class="status-ranked">RANKED 4TH // NATIONAL</span></div>
+    <div class="project-title">FIRE EVACUATION AI</div>
+    <div class="project-desc">
+        Real-time pathing AI using game-engine simulations. Solves complex emergency routing problems under dynamic constraints. Built for the Honeywell National Hackathon — ranked 4th.
+    </div>
+
+    <button class="project-expand-toggle" onclick="toggleExpand(this)">
+        <span class="arrow">▶</span> Project Details
+    </button>
+    <div class="project-expand">
+        <div class="expand-content">
+        <div class="expand-section">
+            <div class="expand-label">Description</div>
+            <div class="expand-text">
+            A <strong>real-time emergency routing system</strong> built using game-engine simulations for dynamic exit path optimization. Focused on safest route calculation during high-stress evacuation scenarios with constantly changing obstacle maps.
+            </div>
+        </div>
+        <div class="expand-section">
+            <div class="expand-label">Use Case</div>
+            <div class="expand-text">
+            <strong>Emergency Evacuation in Large Buildings.</strong> When a fire breaks out, traditional exit signs become irrelevant if a corridor is blocked. This AI recalculates optimal escape routes in real-time based on fire spread patterns and crowd density.
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <button class="specs-toggle" onclick="toggleSpecs(this)">
+        <span class="arrow">▶</span> Technical Specs
+    </button>
+    <div class="specs-drawer">
+        <div class="specs-list">
+        <div class="spec-item"><div class="spec-key">Platform</div><div class="spec-val">Game Engine Sim</div></div>
+        <div class="spec-item"><div class="spec-key">Core</div><div class="spec-val">Pathfinding AI</div></div>
+        <div class="spec-item"><div class="spec-key">Event</div><div class="spec-val">Honeywell Hackathon</div></div>
+        <div class="spec-item"><div class="spec-key">Ranking</div><div class="spec-val">4th / National</div></div>
+        <div class="spec-item"><div class="spec-key">Domain</div><div class="spec-val">Emergency Systems</div></div>
+        <div class="spec-item"><div class="spec-key">Focus</div><div class="spec-val">Real-time Routing</div></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- B-DOC Hunter -->
+    <div class="project-card" style="grid-column: 1 / -1;">
+    <div class="project-number">05</div>
+    <div class="project-status"><span class="status-built">DEPLOYED</span></div>
+    <div class="project-title">B-DOC HUNTER</div>
+    <div class="project-desc">
+        NLP-powered tool that summarizes dense business documents and extracts sentiment insights for executive decision-making. Cuts through information overload — fast, accurate, actionable.
+    </div>
+
+    <button class="project-expand-toggle" onclick="toggleExpand(this)">
+        <span class="arrow">▶</span> Project Details
+    </button>
+    <div class="project-expand">
+        <div class="expand-content">
+        <div class="expand-section">
+            <div class="expand-label">Description</div>
+            <div class="expand-text">
+            An <strong>NLP document intelligence tool</strong> engineered to process dense business documents — contracts, reports, filings — and extract actionable summaries with sentiment scoring for executive decision-making.
+            </div>
+        </div>
+        <div class="expand-section">
+            <div class="expand-label">Use Case</div>
+            <div class="expand-text">
+            <strong>Executive Decision Support.</strong> A CFO receives a 200-page quarterly report. B-DOC Hunter extracts key insights, flags sentiment shifts in language, and delivers a concise brief — reducing hours of reading to minutes.
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <button class="specs-toggle" onclick="toggleSpecs(this)">
+        <span class="arrow">▶</span> Technical Specs
+    </button>
+    <div class="specs-drawer">
+        <div class="specs-list">
+        <div class="spec-item"><div class="spec-key">Core Tech</div><div class="spec-val">NLP</div></div>
+        <div class="spec-item"><div class="spec-key">Output</div><div class="spec-val">Summaries + Sentiment</div></div>
+        <div class="spec-item"><div class="spec-key">Target</div><div class="spec-val">Executive Decisions</div></div>
+        <div class="spec-item"><div class="spec-key">Type</div><div class="spec-val">Document Intelligence</div></div>
+        </div>
+    </div>
+    </div>
+
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 02: CORE SYSTEMS -->
+<section id="systems">
+<div class="section-label">02 // Core Systems</div>
+<div class="section-title">WHAT I<br>BUILD</div>
+
+<div class="bento">
+
+    <div class="bento-card card-lg">
+    <div class="card-tag">Systems Management</div>
+    <div class="card-heading">OPERATIONS<br>MANAGER</div>
+    <div class="card-body">
+        Leading end-to-end digital transformation of a traditional textile manufacturing unit into a data-driven operation at Amithraj Apparels. Implementing production monitoring systems and operational data capture to identify bottlenecks and optimize resource allocation. Managing vendor relationships, production timelines, and cross-functional teams across factory floor operations.
+    </div>
+    <div class="skill-tags">
+        <span class="skill-tag">Process Optimization</span>
+        <span class="skill-tag">Data Auditing</span>
+        <span class="skill-tag">System Migration</span>
+        <span class="skill-tag">B2B Operations</span>
+        <span class="skill-tag">Vendor Management</span>
+    </div>
+    </div>
+
+    <div class="bento-card card-sm">
+    <div class="card-tag">Community Growth</div>
+    <div class="card-body">PerFormance Esports — scaling a digital community from zero to:</div>
+    <br>
+    <div class="big-number">1K<span>+</span></div>
+    <div class="card-body">Active members in 60 days</div>
+    <div class="card-body" style="margin-top:0.5rem;">Automated tournament management, onboarding systems, and engagement loops built from scratch.</div>
+    </div>
+
+    <div class="bento-card card-8">
+    <div class="card-tag">Technical Stack</div>
+    <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">XGBoost</span>
+        <span class="skill-tag">m2cgen</span>
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">OpenCV</span>
+        <span class="skill-tag">React.js</span>
+        <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">NLP</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">Tailwind CSS</span>
+    </div>
+    </div>
+
+    <div class="bento-card card-4">
+    <div class="card-tag">Cloud &amp; Infra</div>
+    <div class="skill-tags">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">GCP</span>
+        <span class="skill-tag">Vercel</span>
+        <span class="skill-tag">Serverless</span>
+        <span class="skill-tag">Local LLM</span>
+    </div>
+    </div>
+
+    <div class="bento-card card-sm">
+    <div class="card-tag">Hardware // Optimized</div>
+    <div style="margin-bottom:1.5rem;">
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted2);letter-spacing:0.15em;text-transform:uppercase;">CPU</div>
+        <div style="font-size:14px;color:var(--white);">AMD Ryzen 7600X</div>
+        <span class="skill-tag" style="margin-top:4px;">CURVE OPTIMIZED</span>
+        <div class="hw-bar"><div class="hw-bar-fill" style="width:88%"></div></div>
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;">CURVE OPTIMIZED // 88%</div>
+    </div>
+    <div>
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted2);letter-spacing:0.15em;text-transform:uppercase;">GPU</div>
+        <div style="font-size:14px;color:var(--white);">AMD Radeon 7800 XT</div>
+        <span class="skill-tag" style="margin-top:4px;">UNDERVOLTED</span>
+        <div class="hw-bar"><div class="hw-bar-fill" style="width:94%"></div></div>
+        <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;">GPU UNDERVOLT // 94%</div>
+    </div>
+    </div>
+
+    <div class="bento-card card-lg">
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div class="card-tag">Education</div>
+    <div class="card-heading">B.TECH AI &amp; ML</div>
+    <div class="card-body">Jain University, Bangalore</div>
+    <div class="card-body">2021 – 2025</div>
+    <br>
+    <div style="display:flex;align-items:baseline;gap:1rem;">
+        <div class="big-number" style="font-size:64px;">7.4</div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;">SGPA</div>
+    </div>
+    <div class="card-body" style="margin-top:1rem;">Artificial Intelligence &amp; Machine Learning Specialization</div>
+    </div>
+
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 03: EXPERIENCE -->
+<section id="experience">
+<div class="section-label">03 // Experience Log</div>
+
+<div class="section-title">WHERE I'VE<br>BEEN</div>
+
+<div class="timeline">
+
+    <div class="timeline-item">
+    <div class="timeline-date">Aug 2025 — Present</div>
+    <div class="timeline-role">OPERATIONS MANAGER</div>
+    <div class="timeline-company">Amithraj Apparels — Bangalore, India</div>
+    <ul class="timeline-bullets">
+        <li>Leading end-to-end digital transformation of a traditional textile manufacturing unit</li>
+        <li>Implementing production monitoring systems and operational data capture</li>
+        <li>Managing vendor relationships, production timelines, and cross-functional teams</li>
+        <li>Phasing in high-efficiency technical upgrades without disrupting production</li>
+    </ul>
+    </div>
+
+    <div class="timeline-item">
+    <div class="timeline-date">May 2021 — March 2022</div>
+    <div class="timeline-role">FOUNDER &amp; TOURNAMENT DIRECTOR</div>
+    <div class="timeline-company">PerFormance Esports</div>
+    <ul class="timeline-bullets">
+        <li>0 → 1,000+ active participants within 60 days through targeted outreach</li>
+        <li>Designed and executed tournament operations including logistics and participant management</li>
+        <li>Managed end-to-end event delivery: venue coordination, vendor negotiations, timeline management</li>
+        <li>Automated onboarding systems and engagement loops</li>
+    </ul>
+    </div>
+
+    <div class="timeline-item">
+    <div class="timeline-date">Jan 2023 — April 2023</div>
+    <div class="timeline-role">DIGITAL MARKETING INTERN</div>
+    <div class="timeline-company">Samarya Naturals</div>
+    <ul class="timeline-bullets">
+        <li>Executed SEO-driven campaigns and database management</li>
+        <li>Designed ambassador programs and college outreach initiatives</li>
+        <li>Optimized customer acquisition funnels and organic reach</li>
+    </ul>
+    </div>
+
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 04: HOBBIES & INTERESTS -->
+<section id="hobbies">
+<div class="section-label">04 // Beyond The Screen</div>
+<div class="section-title">OFF THE<br>CLOCK</div>
+
+<div class="hobbies-grid">
+
+    <div class="hobby-card card-lg">
+    <div class="card-tag">Financial Markets</div>
+    <div class="hobby-title">F&amp;O &amp; CRYPTO MARKETS</div>
+    <div class="hobby-desc">
+        4+ years analyzing Nifty/BankNifty F&amp;O derivatives and cryptocurrency markets. Managing personal capital through high-volatility cycles using disciplined risk-to-reward ratios, price action analysis, and systematic frameworks. The same pattern recognition applied in engineering, applied to global capital markets.
+    </div>
+    <div class="hobby-tags">
+        <span class="hobby-tag">Price Action</span>
+        <span class="hobby-tag">Order Flow</span>
+        <span class="hobby-tag">VIX Tracking</span>
+        <span class="hobby-tag">R:R Ratios</span>
+        <span class="hobby-tag">F&amp;O Derivatives</span>
+        <span class="hobby-tag">DeFi</span>
+        <span class="hobby-tag">Crypto</span>
+    </div>
+    </div>
+
+    <div class="hobby-card card-sm">
+    <div class="card-tag">Competitive Gaming</div>
+    <div class="hobby-title">ESPORTS</div>
+    <div class="hobby-desc">
+        Founded PerFormance Esports. Competitive gaming as a discipline — strategy, reaction time, and team coordination under pressure. Scaled tournaments to 1,000+ participants.
+    </div>
+    <div class="hobby-tags">
+        <span class="hobby-tag">Tournament Ops</span>
+        <span class="hobby-tag">Community</span>
+        <span class="hobby-tag">Strategy</span>
+    </div>
+    </div>
+
+    <div class="hobby-card card-xs">
+    <div class="card-tag">Combat Sports</div>
+    <div class="hobby-title">MARTIAL ARTS &amp; BOXING</div>
+    <div class="hobby-desc">
+        Discipline through combat. Martial arts and boxing — building mental resilience and physical precision.
+    </div>
+    </div>
+
+    <div class="hobby-card card-xs">
+    <div class="card-tag">Fitness</div>
+    <div class="hobby-title">GYM &amp; HORSE RIDING</div>
+    <div class="hobby-desc">
+        Consistent strength training and equestrian pursuit. Physical optimization as a lifestyle — not a routine.
+    </div>
+    </div>
+
+    <div class="hobby-card card-xs">
+    <div class="card-tag">Automotive</div>
+    <div class="hobby-title">CAR CULTURE</div>
+    <div class="hobby-desc">
+        Engineering appreciation through automotive design, performance tuning, and the culture of machines.
+    </div>
+    </div>
+
+    <div class="hobby-card card-md">
+    <div class="card-tag">Tech Hardware</div>
+    <div class="hobby-title">PC OC &amp; ASSEMBLY</div>
+    <div class="hobby-desc">
+        Overclocking, undervolting, and building performance-optimized PC systems. Squeezing every drop of efficiency from silicon — Ryzen 7600X curve optimized, RX 7800XT undervolted. Digital architecture born from understanding systems at their core.
+    </div>
+    <div class="hobby-tags">
+        <span class="hobby-tag">Overclocking</span>
+        <span class="hobby-tag">Undervolting</span>
+        <span class="hobby-tag">Custom Builds</span>
+        <span class="hobby-tag">Benchmarking</span>
+    </div>
+    </div>
+
+    <div class="hobby-card card-md">
+    <div class="card-tag">Research</div>
+    <div class="hobby-title">IT R&amp;D</div>
+    <div class="hobby-desc">
+        Deploying local LLMs, setting up autonomous AI agents, engineering serverless architectures. The drive isn't just to build — it's to build with absolute efficiency. Looking at an 850MB dependency tree and seeing 800MB of dead weight.
+    </div>
+    <div class="hobby-tags">
+        <span class="hobby-tag">Local LLMs</span>
+        <span class="hobby-tag">AI Agents</span>
+        <span class="hobby-tag">Serverless</span>
+        <span class="hobby-tag">Optimization</span>
+    </div>
+    </div>
+
+</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- SECTION 05: CONTACT -->
+<section id="contact">
+<div class="section-label">05 // Contact</div>
+<div class="section-title">INITIATE<br>CONTACT</div>
+
+<div class="contact-grid">
+    <div class="contact-cell">
+    <div class="contact-label">Email</div>
+    <a href="mailto:contact@mahatomanish.com" class="contact-val">contact@mahatomanish.com</a>
+    </div>
+    <div class="contact-cell">
+    <div class="contact-label">Phone</div>
+    <a href="tel:+918088544476" class="contact-val">+91 80885 44476</a>
+    </div>
+    <div class="contact-cell">
+    <div class="contact-label">Website</div>
+    <a href="https://mahatomanish.com" class="contact-val">mahatomanish.com</a>
+    </div>
+    <div class="contact-cell">
+    <div class="contact-label">Location</div>
+    <div class="contact-val">Bangalore, India</div>
+    </div>
+    <div class="contact-cell">
+    <div class="contact-label">GitHub</div>
+    <a href="https://github.com/manchxz" target="_blank" rel="noopener" class="contact-val">github.com/manchxz</a>
+    </div>
+    <div class="contact-cell">
+    <div class="contact-label">Resume</div>
+    <a href="./Manish_Mahto_Resume.pdf" target="_blank" rel="noopener" class="contact-val contact-resume">See Resume</a>
+    </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="foot-left">© 2026 MANISH MAHTO // ALL SYSTEMS OPERATIONAL</div>
+<div class="foot-right">BUILT WITH PRECISION // BANGALORE, IND</div>
+</footer>
+
+<div class="noise"></div>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+mx = e.clientX; my = e.clientY;
+cursor.style.left = mx + 'px';
+cursor.style.top = my + 'px';
+});
+
+function animateRing() {
+rx += (mx - rx) * 0.12;
+ry += (my - ry) * 0.12;
+ring.style.left = rx + 'px';
+ring.style.top = ry + 'px';
+requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .bento-card, .project-card, .hobby-card, .contact-cell').forEach(el => {
+el.addEventListener('mouseenter', () => {
+    ring.style.width = '48px';
+    ring.style.height = '48px';
+    ring.style.borderColor = 'rgba(0,238,255,0.6)';
+});
+el.addEventListener('mouseleave', () => {
+    ring.style.width = '32px';
+    ring.style.height = '32px';
+    ring.style.borderColor = 'rgba(0,238,255,0.3)';
+});
+});
+
+function toggleSpecs(btn) {
+btn.classList.toggle('open');
+const drawer = btn.nextElementSibling;
+drawer.classList.toggle('open');
+}
+
+function toggleExpand(btn) {
+btn.classList.toggle('open');
+const expandSection = btn.nextElementSibling;
+expandSection.classList.toggle('open');
+}
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+    if (entry.isIntersecting) {
+    entry.target.style.opacity = '1';
+    entry.target.style.transform = 'translateY(0)';
+    }
+});
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.bento-card, .project-card, .timeline-item, .contact-cell, .hobby-card').forEach(el => {
+el.style.opacity = '0';
+el.style.transform = 'translateY(24px)';
+el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+observer.observe(el);
+});
+
+document.querySelectorAll('.bento-card').forEach((el, i) => {
+el.style.transitionDelay = (i * 0.08) + 's';
+});
+document.querySelectorAll('.project-card').forEach((el, i) => {
+el.style.transitionDelay = (i * 0.1) + 's';
+});
+document.querySelectorAll('.hobby-card').forEach((el, i) => {
+el.style.transitionDelay = (i * 0.06) + 's';
+});
+document.querySelectorAll('.contact-cell').forEach((el, i) => {
+el.style.transitionDelay = (i * 0.05) + 's';
+});
+
+// Animate metrics on scroll
+const metricObserver = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+    entry.target.dataset.animated = 'true';
+    const valEl = entry.target.querySelector('.val');
+    if (!valEl) return;
+    const text = valEl.textContent;
+    const match = text.match(/(\d+)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    let current = 0;
+    const step = Math.ceil(target / 40);
+    const suffix = text.replace(match[1], '').trim();
+    const interval = setInterval(() => {
+        current += step;
+        if (current >= target) {
+        current = target;
+        clearInterval(interval);
+        }
+        valEl.innerHTML = valEl.innerHTML.replace(/\d+/, current);
+    }, 30);
+    }
+});
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.metric-item').forEach(el => metricObserver.observe(el));
+</script>
+
+</body>
+</html>
